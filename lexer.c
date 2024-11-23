@@ -74,8 +74,8 @@ Token getToken(FILE *fonte) {
   char lexema[100];
 
   while ((c = fgetc(fonte)) != EOF) {
-    /*printf("DEBUG: Lendo caractere '%c' (linha: %d, coluna: %d)\n", c, linha,
-           coluna);*/
+    printf("DEBUG: Lendo caractere '%c' (linha: %d, coluna: %d)\n", c, linha,
+           coluna);
     coluna++;
 
     if (c == ' ' || c == '\t' || c == '\n') {
@@ -89,9 +89,9 @@ Token getToken(FILE *fonte) {
         strcpy(token.lexema, lexema);
         token.linha = linha;
         token.coluna = inicioColuna;
-        /*printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
+        printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
                "Coluna: %d\n",
-               token.nome, token.lexema, token.linha, token.coluna);*/
+               token.nome, token.lexema, token.linha, token.coluna);
         return token;
       }
       if (c == '\n') { 
@@ -118,9 +118,9 @@ Token getToken(FILE *fonte) {
           token.linha = linha;
           token.coluna = inicioColuna;
           strcpy(token.lexema, ":=");
-          /*printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
+          printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
                  "Coluna: %d\n",
-                 token.nome, token.lexema, token.linha, token.coluna);*/
+                 token.nome, token.lexema, token.linha, token.coluna);
           return token;
         } else {
           ungetc(c, fonte);
@@ -128,9 +128,9 @@ Token getToken(FILE *fonte) {
           token.linha = linha;
           token.coluna = inicioColuna;
           strcpy(token.lexema, ":");
-          /*printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
+          printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
                  "Coluna: %d\n",
-                 token.nome, token.lexema, token.linha, token.coluna);*/
+                 token.nome, token.lexema, token.linha, token.coluna);
           return token;
         }
       } else if (ehSimbolo(lexema)) {
@@ -146,9 +146,9 @@ Token getToken(FILE *fonte) {
         token.linha = linha;
         token.coluna = inicioColuna;
         strcpy(token.lexema, lexema);
-        /*printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
+        printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
                "Coluna: %d\n",
-               token.nome, token.lexema, token.linha, token.coluna);*/
+               token.nome, token.lexema, token.linha, token.coluna);
         return token;
       } else {
         strcpy(token.nome, "ERRO");
@@ -174,9 +174,9 @@ Token getToken(FILE *fonte) {
         strcpy(token.lexema, lexema);
         token.linha = linha;
         token.coluna = inicioColuna;
-        /*printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
+        printf("DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, "
                "Coluna: %d\n",
-               token.nome, token.lexema, token.linha, token.coluna);*/
+               token.nome, token.lexema, token.linha, token.coluna);
         return token;
       }
       break;
@@ -193,9 +193,9 @@ Token getToken(FILE *fonte) {
           strcpy(token.lexema, lexema);
           token.linha = linha;
           token.coluna = inicioColuna;
-          /*printf("DEBUG: Gerando token -> Nome: NUM_INT, Lexema: %s, Linha: "
+          printf("DEBUG: Gerando token -> Nome: NUM_INT, Lexema: %s, Linha: "
                  "%d, Coluna: %d\n",
-                 token.lexema, token.linha, token.coluna);*/
+                 token.lexema, token.linha, token.coluna);
           return token;
         }
       }
@@ -220,9 +220,9 @@ Token getToken(FILE *fonte) {
     strcpy(token.lexema, lexema);
     token.linha = linha;
     token.coluna = inicioColuna;
-    /*printf(
+    printf(
         "DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, Coluna: %d\n",
-        token.nome, token.lexema, token.linha, token.coluna);*/
+        token.nome, token.lexema, token.linha, token.coluna);
     return token;
   }
 
@@ -230,8 +230,8 @@ Token getToken(FILE *fonte) {
   token.linha = linha;
   token.coluna = coluna;
   strcpy(token.lexema, "EOF");
-  /*printf(
+  printf(
       "DEBUG: Gerando token -> Nome: %s, Lexema: %s, Linha: %d, Coluna: %d\n",
-      token.nome, token.lexema, token.linha, token.coluna);*/
+      token.nome, token.lexema, token.linha, token.coluna);
   return token;
 }
